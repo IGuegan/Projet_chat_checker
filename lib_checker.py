@@ -1,7 +1,9 @@
 from gruut import sentences
 from difflib import SequenceMatcher
 
-
+"""--------------------------------
+        Comparaisons de chaines
+--------------------------------"""
 # Comparaison de deux chaines de caractères
 # Renvoie le %age de correspondance
 def get_2strings_match_percent(a, b):
@@ -17,6 +19,9 @@ def check_string_array_match(str,array):
             res[insulte_phoneme] = percent
     return res
 
+"""--------------------------------
+    Récupération des données
+--------------------------------"""
 # Récupération des mots dans le fichier 'insulte.txt'
 def get_file_content(fic_url):
     result = open(fic_url, "r")
@@ -24,8 +29,7 @@ def get_file_content(fic_url):
     result.close()
     return all_lines
 
-#Remplacement de tous les variants
-#   paramètre : all_lines -> 
+#Remplacement de tous les variants d'une lettre par celle-ci
 def get_no_variants(all_lines, e_variants):
     list_line = []
     for line in all_lines:
@@ -37,7 +41,10 @@ def get_no_variants(all_lines, e_variants):
         list_line.append(line_tmp)
     return(list_line)
 
-
+"""--------------------------------
+        Récupérations de phontiques
+--------------------------------"""
+# Retourne la phonetique d'un mot (ou phrase) donné
 def get_phoneme(word):
     for sent in sentences(word, lang="fr"):
             res = ''
@@ -47,6 +54,7 @@ def get_phoneme(word):
                     res = res + line_string
     return res
 
+# Retourne une liste (en texte) des mots d'une liste, séparés par un retour chariot
 def get_phonemes(data):
     result = ''
     for line in data:
