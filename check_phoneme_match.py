@@ -9,12 +9,14 @@ source_insultes = './insulte2.txt'          # Fichier avec la liste d'insultes
     ## Variants ##
 e_variants = ['é', 'è', 'ë','ê']            # Variants de la lettre e
 
+    ## Ponctuation ##
+ponctuations = ['?', ':', ';', ',', '/', '!', '§', '%', 'ù', '¨', '^', '$', '£', '¤','&','é','"',"'",'#','{','(','[','-','|','`','_','\\','^',')',']','=','+','}','*']
 
 """--------------------------------
         Initialisation
 --------------------------------"""
 
-insultes_array = get_no_variants(get_file_content(source_insultes), e_variants)     # Récupération des insultes du fichier, et remplacement des variantes de lettres
+insultes_array = clean_text(get_file_content(source_insultes), e_variants, ponctuations)     # Récupération des insultes du fichier, et remplacement des variantes de lettres
 insultes_phonemes_array = get_phonemes_array(insultes_array)                        # Récupération des phonétiques des insultes
 
 

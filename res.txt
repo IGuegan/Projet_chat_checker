@@ -1,0 +1,3 @@
+��{nique ta mere:
+{		{ʁɔniktam: '0.75'}		{ɔniktamɛ: '0.75'}		{niktamɛʁ: '0.875'}}
+}
