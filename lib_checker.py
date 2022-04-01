@@ -28,7 +28,7 @@ def find_match_in_string(phrase, insulte):
     for i in range(0,taille_str_p-taille_insulte_p):
         str_tmp = str_p[i:i+taille_insulte_p]
         percent_tmp = get_2strings_match_percent(insulte_p, str_tmp)
-        if percent_tmp>=0.6:
+        if percent_tmp>=0.8:
             res[str_tmp] = percent_tmp
     return res
 
@@ -43,6 +43,19 @@ def find_matchs_string_array(phrase, insulte_array):
 """--------------------------------
     Récupération des données
 --------------------------------"""
+
+def list_to_tab(src):
+    tab = clean_text(get_file_content('insulte.txt'),[], [])
+    print(tab)
+    toprint = 'insultes = {\n'
+    for mot in tab:
+        toprint += '"'+mot+'",\n'
+    toprint += "}"
+    toprint = toprint.replace(',\n}','\n}')
+    destination_file = open(src, "a", encoding="utf-16")
+    destination_file.write(toprint)
+    destination_file.close()
+    
 # Récupération des mots dans le fichier 'insulte.txt'
 def get_file_content(fic_url):
     result = open(fic_url, "r", encoding="utf-8")
@@ -64,7 +77,7 @@ def clean_text(all_lines, e_variants, ponctuations):
     return(list_line)
 
 """--------------------------------
-        Récupérations de phontiques
+        Récupérations de phonetiques
 --------------------------------"""
 # Retourne la phonetique d'un mot (ou phrase) donné
 def get_phoneme(word):
